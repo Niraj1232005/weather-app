@@ -42,7 +42,6 @@ cd weather-app
 
 ```
 npm install
-
 ```
 
 * * * * *
