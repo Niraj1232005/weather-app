@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Weather</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/styles/main.css" />
+</head>
+
+<body class="<%= weather ? weather.weather[0].main.toLowerCase() : '' %>">
+
+  <div class="container">
+    <h1>Weather App 🌤️</h1>
+
+    <form action="/weather" method="post">
+
+      <!-- 🌍 COUNTRY -->
+      <div class="dropdown" id="countryDropdown">
+        <div class="dropdown-selected">Select Country</div>
+
+        <div class="dropdown-options">
+          <input type="text" class="dropdown-search" placeholder="Search country..." />
+          <div class="options-list"></div>
+        </div>
+      </div>
+
+      <input type="hidden" name="country" id="countryInput">
+
+      <!-- 🏙 STATE -->
+      <div class="dropdown" id="stateDropdown">
+        <div class="dropdown-selected">Select State</div>
+
+        <div class="dropdown-options">
+          <input type="text" class="dropdown-search" placeholder="Search state..." />
+          <div class="options-list"></div>
+        </div>
+      </div>
+
+      <input type="hidden" name="state" id="stateInput">
+
+      <!-- 🌆 CITY -->
+      <div class="dropdown" id="cityDropdown">
+        <div class="dropdown-selected">Select City</div>
+
+        <div class="dropdown-options">
+          <input type="text" class="dropdown-search" placeholder="Search city..." />
+          <div class="options-list"></div>
+        </div>
+      </div>
+
+      <input type="hidden" name="city" id="cityInput">
+
+      <button type="submit">Get Weather</button>
+    </form>
+
+    <!-- 🌦 WEATHER RESULT -->
+    <% if (weather) { %>
+      <div class="weather-box">
+  <h2><%= weather.name %>, <%= weather.sys.country %></h2>
+
+  <img src="https://openweathermap.org/img/wn/<%= weather.weather[0].icon %>@2x.png" />
+
+  <h1><%= Math.round(weather.main.temp) %>°C</h1>
+
+  <p><%= weather.weather[0].main %> • <%= weather.weather[0].description %></p>
+
+  <div class="extra">
+    <p>💧 Humidity: <%= weather.main.humidity %>%</p>
+    <p>🌡 Feels like: <%= Math.round(weather.main.feels_like) %>°C</p>
+    <p>🌬 Wind: <%= weather.wind.speed %> m/s</p>
+    <p>👁 Visibility: <%= weather.visibility / 1000 %> km</p>
+  </div>
+</div>
+
+    <% } %>
+
+    <% if (error) { %>
+      <p style="color:#ff6b6b; margin-top:10px;"><%= error %></p>
+    <% } %>
+
+  </div>
+
+  <script src="/script.js"></script>
+<script>
+  const hour = new Date().getHours();
+  if (hour >= 18 || hour < 6) {
+    document.body.classList.add("night");
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,215 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* CONTAINER */
+.container {
+  width: 350px;
+  padding: 30px;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  position: relative;
+}
+.container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(45deg, #00c6ff, #0072ff);
+  opacity: 0.2;
+  filter: blur(20px);
+  z-index: -1;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+form {
+  margin-bottom: 20px;
+}
+
+/* BUTTON */
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 12px;
+  border: none;
+  background: linear-gradient(to right, #0072ff, #00c6ff);
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 15px;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+/* 🔽 DROPDOWN (CLEAN VERSION) */
+.dropdown {
+  position: relative;
+  margin: 15px 0;
+}
+
+.dropdown-selected {
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(12px);
+  text-align: left;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.dropdown-selected:hover {
+  background: rgba(255,255,255,0.2);
+}
+
+/* DROPDOWN MENU */
+.dropdown-options {
+  position: absolute;
+  top: 110%;
+  width: 100%;
+  background: #1e293b; /* clean dark */
+  border-radius: 12px;
+  display: none;
+  z-index: 999;
+  padding: 8px;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+  animation: fadeIn 0.25s ease;
+}
+
+.dropdown.active .dropdown-options {
+  display: block;
+}
+
+/* SEARCH INPUT */
+.dropdown-search {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  margin-bottom: 8px;
+  background: #334155;
+  color: white;
+  outline: none;
+}
+
+/* OPTIONS LIST */
+.options-list {
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+/* SCROLLBAR (CLEAN 🔥) */
+.options-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.options-list::-webkit-scrollbar-thumb {
+  background: #64748b;
+  border-radius: 10px;
+}
+
+/* OPTIONS */
+.options-list div {
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 4px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.options-list div:hover {
+  background: #2563eb;
+  color: white;
+  transform: translateX(4px);
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+/* 🌦 WEATHER UI */
+.weather-box {
+  margin-top: 20px;
+}
+
+.weather-box img {
+  width: 80px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.weather-box h2 {
+  margin: 10px 0;
+}
+
+.weather-box h1 {
+  font-size: 40px;
+  margin: 10px 0;
+}
+
+.weather-box p {
+  margin: 5px 0;
+}
+
+/* EXTRA INFO */
+.extra {
+  margin-top: 15px;
+  font-size: 14px;
+  opacity: 0.9;
+}
+body.clear {
+  background: linear-gradient(135deg, #56ccf2, #2f80ed);
+}
+
+body.clouds {
+  background: linear-gradient(135deg, #757f9a, #d7dde8);
+}
+
+body.rain {
+  background: linear-gradient(135deg, #314755, #26a0da);
+}
+
+body.smoke {
+  background: linear-gradient(135deg, #3e5151, #decba4);
+}
+
+body.night {
+  background: linear-gradient(135deg, #0f2027, #203a43, #000000);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+.dropdown.active .dropdown-selected {
+  background: rgba(255,255,255,0.25);
+}
