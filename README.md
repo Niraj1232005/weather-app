@@ -1,4 +1,4 @@
-🌤 Weather App 
+🌤 AeroCast
 ===========================
 
 This project is a modern weather application built using Node.js, Express, and EJS. It provides real-time weather updates with a clean UI and dynamic features.
